@@ -15,16 +15,41 @@ def create_dummy_data():
     print(f"\n{Colors.BLUE}[GENERATOR] Creating sample datasets...{Colors.ENDC}")
     
     data_fraud = [
-        {"email": "fraudster@gmail.com", "risk": "MONEY_LAUNDERING", "role": "PERPETRATOR"},
-        {"email": "victim@yahoo.ca", "risk": "IDENTITY_THEFT", "role": "VICTIM"}
+        {
+            "email": "badguy@gmail.com", 
+            "phone": "514-555-0000",
+            "sin": "123 456 789",
+            "risk": "MONEY_LAUNDERING", 
+            "role": "PERPETRATOR"
+        },
+        {
+            "sin": "999-999-999",
+            "risk": "IDENTITY_THEFT", 
+            "role": "VICTIM"
+        }
     ]
     with open(INPUT_FRAUD_FILE, 'w') as f:
         json.dump(data_fraud, f, indent=4)
         
     data_check = [
-        {"id": "APP-001", "email": "innocent@gmail.com"},
-        {"id": "APP-002", "email": "fraudster@gmail.com"},
-        {"id": "APP-003", "email": "victim@yahoo.ca"}
+        {
+            "id": "APP-001 (Clean)", 
+            "email": "innocent@gmail.com", 
+            "phone": "450-111-1111",
+            "sin": "111 111 111"
+        },
+        {
+            "id": "APP-002 (Fraudeur connu)", 
+            "email": "badguy@gmail.com",
+            "phone": "514-555-9999",
+            "sin": "000 000 000"
+        },
+        {
+            "id": "APP-003 (NAS Volé)", 
+            "email": "nouveau.mail@hotmail.com",
+            "phone": "418-222-2222",
+            "sin": "999999999"
+        }
     ]
     with open(INPUT_CHECK_FILE, 'w') as f:
         json.dump(data_check, f, indent=4)
